@@ -1,6 +1,9 @@
-## download zip file
-fileUrl<-"https://archive.ics.uci.edu/ml/machine-learning-databases/00235/household_power_consumption.zip"
-download.file(fileUrl,destfile="household_power_consumption.zip")
+
+## download zip file only if needed
+if (!file.exists("household_power_consumption.zip")) {
+  fileUrl<-"https://archive.ics.uci.edu/ml/machine-learning-databases/00235/household_power_consumption.zip"
+  download.file(fileUrl,destfile="household_power_consumption.zip") 
+}
 
 ## read required lines only, from specific dates
 d<-subset(read.table(
