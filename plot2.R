@@ -1,6 +1,9 @@
-## download zip file
-fileUrl<-"https://archive.ics.uci.edu/ml/machine-learning-databases/00235/household_power_consumption.zip"
-download.file(fileUrl,destfile="household_power_consumption.zip")
+
+## download zip file only if needed
+if (!file.exists("household_power_consumption.zip")) {
+  fileUrl<-"https://archive.ics.uci.edu/ml/machine-learning-databases/00235/household_power_consumption.zip"
+  download.file(fileUrl,destfile="household_power_consumption.zip") 
+}
 
 ## read required lines only, from specific dates
 d<-subset(read.table(
@@ -17,6 +20,11 @@ d<-subset(read.table(
 ##########
 ## plot 2
 ##########
+
+## install package "lubridate" only if needed
+ipc<-as.data.frame(installed.packages())
+if(!("lubridate" %in% ipc$Package)){install.packages("lubridate")}
+library("lubridate")
 
 ## combine Date and Time into a single datetime variable
 d$dt<-as.POSIXct(paste(dmy(d$Date), d$Time))
