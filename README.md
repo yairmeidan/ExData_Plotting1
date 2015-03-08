@@ -66,9 +66,11 @@ This repo has been forked and cloned from the following GitHub repository:
 Each of the four R codes constructs the corresponding plot, i.e. code in `plot1.R` constructs
 the `plot1.png` plot. Each code is fully reproducinle, and follows the following steps:
 
-* Downloads the entire data set.
+* Downloads the entire data set, if it has not been downloaded yet.
 
 * Reads only the data it needs.
+
+* For plots 2-4, since it needs the "lubridate" package, it installs it if it has not been installed yet, and then loads it into memory.
 
 * Constructs a single plot and saves it to a PNG file with a width of 480
 pixels and a height of 480 pixels.
